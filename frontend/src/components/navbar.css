@@ -1,0 +1,43 @@
+.navbar {
+  width: 250px;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: #27445D;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1020202020;
+}
+
+.navbar-nav {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+}
+
+.nav-item {
+  width: 100%;
+}
+
+
+.nav-link {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  display: block;
+  padding: 35px;
+  text-align: center;
+
+}
+
+.nav-link:hover {
+  background-color: #7b88947d;
+}
+
+.nav-link.active {
+  background-color: rgba(113, 187, 178, 0.505);
+  /* Highlight active link */
+}
