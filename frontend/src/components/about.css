@@ -3,7 +3,7 @@
         url('https://images.unsplash.com/photo-1568515387631-8b650bbcdb90?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center / cover;
     background-attachment: fixed;
     height: 100vh;
-    width: calc(100vw - 250px);
+    width: calc(100vw - 225px);
     display: flex;
     justify-content: center;
     align-items: center;
