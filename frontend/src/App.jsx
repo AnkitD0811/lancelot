@@ -1,12 +1,13 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import NavBar from "./components/navbar"; // Assuming navbar.jsx is Sidebar
+import "./App.css";
+import NavBar from "./components/navbar";
 import Dashboard from "./components/dashboard";
 import Profile from "./components/profile";
 import About from "./components/about";
 import Home from "./components/home";
 import TrackerMenu from "./components/trackermenu";
-import "./App.css"; // Import CSS
+import Settings from "./components/settings";
 
 function App() {
     return (
@@ -19,6 +20,7 @@ function App() {
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/about" element={<About />} />
+                    <Route path="/settings" element={<Settings />} />
                 </Routes>
             </div>
         </div>

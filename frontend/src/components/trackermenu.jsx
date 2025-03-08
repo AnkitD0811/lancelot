@@ -17,12 +17,12 @@ function TrackerMenu() {
                     </NavLink>
                 </li>
                 <li className="tracker-item">
-                    <NavLink to="/profile" className="tracker-link">
+                    <NavLink to="/" className="tracker-link">
                         Tracker 3
                     </NavLink>
                 </li>
                 <li className="tracker-item">
-                    <NavLink to="/about" className="tracker-link">
+                    <NavLink to="/" className="tracker-link">
                         Tracker 4
                     </NavLink>
                 </li>

@@ -1,0 +1,27 @@
+.settings {
+    background: var(--background-gradient), var(--background-image) no-repeat center center / cover;
+    background-attachment: fixed;
+    width: var(--content-width);
+    height: var(--content-height);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.theme-toggle-btn {
+    padding: 10px 15px;
+    background-color: var(--bg-color);
+    color: var(--primary-color);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 15px;
+    font-size: 20px;
+    transition: background-color 0.3s ease;
+    padding:10px 20px;
+}
+
+.theme-toggle-btn:hover {
+    background-color: var(--secondary-color);
+}

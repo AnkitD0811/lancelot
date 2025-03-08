@@ -11,14 +11,12 @@ function NavBar() {
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        {/* Logo and Website Name (Left Side) */}
         <div className="navbar-brand">
           <img src={logo} alt="Logo" className="brand-logo" />
           <span className="brand-name">Tagged</span>
         </div>
 
 
-        {/* Navigation Links (Right Side) */}
         <ul className="navbar-nav">
           <li className="nav-item">
             <NavLink
@@ -30,10 +28,10 @@ function NavBar() {
           </li>
           <li className="nav-item">
             <NavLink
-              to="/dashboard"
+              to="/settings"
               className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
             >
-              Dashboard
+              Settings
             </NavLink>
           </li>
           <li className="nav-item">

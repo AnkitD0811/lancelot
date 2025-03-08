@@ -4,7 +4,7 @@ import "./about.css";
 function About() {
     return (
         <div className="about">
-            <div className="top">
+            <div className="textbox">
                 <h1>About</h1>
                 <p>
                     We are three third-year Computer Science students who have developed an
