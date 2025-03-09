@@ -2,7 +2,7 @@
   --background-image: url('https://images.unsplash.com/photo-1568515387631-8b650bbcdb90?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8f');
   --background-gradient: radial-gradient(rgba(255, 255, 255, 0.25) 0%, #42566c 350%);
   --content-width: calc(100vw - 225px);
-  --content-height: 89vh;
+  --content-height: calc(100vh - 11vh);
 
   /* Light theme (default) */
   --primary-color: #2D539E; /* active */
@@ -22,9 +22,8 @@
 }
 
 .main-content {
-  padding: 0;
-  margin: 11vh 0 0 225px;
-  /*margin: top right bottom left*/
+  padding: 0; /*padding: top right bottom left*/
+  margin: 11vh 0 0 225px; /*margin: top right bottom left*/
   /* ^this is the size of the navbar on the left*/
   transition: background-color 0.3s ease;
 }
@@ -36,7 +35,7 @@
   margin: 0 auto;
   padding: 2rem;
   border-radius: 15px;
-  text-align: left;
+  text-align: center;
   color: var(--text-color, rgba(0, 0, 0, 0.7));
   background-color: var(--card-bg, rgba(255, 255, 255, 0.4));
   backdrop-filter: blur(10px);

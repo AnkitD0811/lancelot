@@ -8,7 +8,7 @@ import About from "./components/about";
 import Home from "./components/home";
 import TrackerMenu from "./components/trackermenu";
 import Settings from "./components/settings";
-
+import AddTracker from "./components/addtracker";
 function App() {
     return (
         <div>
@@ -21,6 +21,7 @@ function App() {
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/settings" element={<Settings />} />
+                    <Route path="/addtracker" element={<AddTracker />} />
                 </Routes>
             </div>
         </div>

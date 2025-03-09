@@ -12,13 +12,12 @@ body {
   width: var(--content-width);
   float: left;
   height: var(--content-height);
-
 }
 
 .map-container {
-  width: 175vh;
+  width: calc(var(--content-width)-20vw);
   height: 55vh;
-  margin:20px 40px;
+  margin: 20px 40px 20px 40px;
   background-color: #a6f699;
   border-radius: 5vh;
   /* border: 1px solid black;  */
