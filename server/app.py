@@ -4,6 +4,8 @@ import constants as const
 import threading
 import logging
 
+from plot_map import plot_realtime
+
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
@@ -27,6 +29,8 @@ def on_connect(client, userdata, flags, reason_code, properties):
 
 def on_message(client, userdata, msg):
     logging.info(f"Received message on {msg.topic}, QoS: {msg.qos}: {msg.payload}")
+    plot_realtime(msg)
+
 
 client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
 client.on_connect = on_connect
