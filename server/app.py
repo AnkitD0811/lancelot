@@ -20,6 +20,22 @@ app = Flask(__name__, static_folder="../frontend/dist", static_url_path="")
 def serve_react():
     return send_from_directory(app.static_folder, "index.html")
 
+
+from flask_socketio import SocketIO, emit
+
+socketio = SocketIO(app, cors_allowed_origins="*")
+
+@socketio.on('connect')
+def handle_connect():
+    print('Client Connected')
+    emit('response', {'data' : 'Connected'})
+
+@socketio.on('message')
+def handle_message(data):
+    print('Received: ', data)
+    emit('response', {'data' : 'Got Message'})
+
+
 ####################### MQTT HANDLER ############################
 def on_connect(client, userdata, flags, reason_code, properties):
     if reason_code == 0:
@@ -78,3 +94,4 @@ def unsubscribe_from():
 
 if __name__ == "__main__":
     app.run(debug=True)
+    socketio.run(app, debug=True)
