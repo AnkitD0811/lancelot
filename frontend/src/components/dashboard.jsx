@@ -5,7 +5,7 @@ import { FaWrench } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import socketIOClient from 'socket.io-client';
 
-const ENDPOINT = 'ws://echo.websocket.org';
+const ENDPOINT = 'ws://127.0.0.1:5000';
 
 function Dashboard() {
 
