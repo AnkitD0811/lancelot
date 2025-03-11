@@ -11,22 +11,50 @@ import io from 'socket.io-client'
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
 import "leaflet/dist/leaflet.css"
 
+
 const ENDPOINT = 'ws://127.0.0.1:5000';
-const socket = io.connect(ENDPOINT)
+const socket = io.connect(ENDPOINT);
+
 
 function Dashboard() {
+
+    const [coordinates, setCoordinates] = useState([51.505, -0.09])
+
+    useEffect(() => {
+        socket.on('receive_tracker_data', (data) => {
+            setCoordinates(() => data.geometry.coordinates);
+        })
+    }, [socket])
+
+    useEffect(() => {
+        console.log("Coordinates updated:", coordinates);
+    }, [coordinates]);
+
+    // Recenter the map with the new coordinates
+    function RecenterMap({ coordinates }) {
+        const map = useMap(); // Access the map instance
+    
+        useEffect(() => {
+            map.setView(coordinates, map.getZoom(), { animate: true });
+        }, [coordinates, map]);
+    
+        return null;
+    }
 
     return (
         <div className="dashboard">
 
             <div className="map-container">
 
-                <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
+                <MapContainer center={coordinates} zoom={13} scrollWheelZoom={true}>
                     <TileLayer
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
-                    <Marker position={[51.505, -0.09]}>
+
+                    <RecenterMap coordinates={coordinates} />
+
+                    <Marker position={coordinates}>
                         <Popup>
                         A pretty CSS3 popup. <br /> Easily customizable.
                         </Popup>

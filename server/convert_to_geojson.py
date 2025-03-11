@@ -90,7 +90,7 @@ def convert_realtime(data):
             "type": "Feature",
             "geometry": {
                 "type": "Point",
-                "coordinates": [longitude, latitude]
+                "coordinates": [latitude, longitude]
             },
             "properties": {
                 "altitude": altitude,

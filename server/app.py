@@ -24,7 +24,6 @@ def serve_react():
 
 
 from flask_socketio import SocketIO, emit
-from flask import request
 
 socketio = SocketIO(app, cors_allowed_origins="*") # Allow all origins for now; Change in prod
 
@@ -33,17 +32,25 @@ def handle_connect():
     logging.info(f'Client Connected; ID: {request.sid}')
     emit('response', {'data' : 'Connected'})
 
-@socketio.on('message')
-def handle_message(data):
-    print('Received: ', data)
-    emit('response', {'data' : 'Got Message'})
-
 @socketio.on('disconnect')
 def test_disconnect(reason):
     logging.info(f'Client disconnected, ID: {request.sid}, reason: {reason}')
 
 
 ####################### MQTT HANDLER ############################
+
+"""
+Flow:
+1. Connect to Client via Websocket Connection
+2. Connect to MQTT
+3. On receiving message from MQTT,
+    a. Parse the message
+    b. Emit to client side for rendering
+"""
+
+from convert_to_geojson import convert_realtime
+
+
 def on_connect(client, userdata, flags, reason_code, properties):
     if reason_code == 0:
         logging.info(f"Connected with result code {reason_code}")
@@ -52,7 +59,9 @@ def on_connect(client, userdata, flags, reason_code, properties):
 
 def on_message(client, userdata, msg):
     logging.info(f"Received message on {msg.topic}, QoS: {msg.qos}: {msg.payload}")
-    plot_realtime(msg)
+    data = convert_realtime(msg.payload.decode('utf-8'))
+    socketio.emit('receive_tracker_data', data)
+
 
 
 client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
@@ -72,7 +81,10 @@ mqtt_thread = threading.Thread(target=run_mqtt_loop)
 mqtt_thread.daemon = True
 mqtt_thread.start()
 
+
 # ROUTES -----------------------------------
+
+
 @app.route("/api/subscribeTo", methods=['POST'])
 def subscribe_to():
     if 'deviceId' in request.form:
@@ -97,7 +109,9 @@ def unsubscribe_from():
         logging.warning("deviceId not provided")
         return 'deviceId not provided', 400
 
+
 ##################################################################
+
 
 if __name__ == "__main__":
     app.run(debug=True)
