@@ -2,43 +2,37 @@ import React from "react";
 import "./dashboard.css";
 import { FaInfo } from "react-icons/fa";
 import { FaWrench } from "react-icons/fa";
+
+// For Websocket configuration
 import { useState, useEffect } from "react";
-import socketIOClient from 'socket.io-client';
+import io from 'socket.io-client'
+
+// For Map Plotting
+import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
+import "leaflet/dist/leaflet.css"
 
 const ENDPOINT = 'ws://127.0.0.1:5000';
+const socket = io.connect(ENDPOINT)
 
 function Dashboard() {
-
-    const [ response, setResponse ] = useState('');
-    const [ message, setMessage ] = useState('');
-
-    const socket = socketIOClient(ENDPOINT);
-
-    useEffect(() => {
-        socket.on('connect', () => {
-            console.log('Connected to Server');
-        })
-
-        socket.on('response', (msg) => {
-            console.log(msg.data);
-            setResponse(msg.data);
-        })
-
-        return () => {socket.disconnect();};
-    }, [socket]);
-
-    const h = "hello World";
-    const sendMessage = () => {
-        socket.emit('message', { h });
-    };
-    
 
     return (
         <div className="dashboard">
 
             <div className="map-container">
-                <p style={{ textAlign: "center", paddingTop: "15%" }}>Response : {response}</p>
-                <button onClick={sendMessage}>Press Me Daddy</button>
+
+                <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
+                    <TileLayer
+                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    />
+                    <Marker position={[51.505, -0.09]}>
+                        <Popup>
+                        A pretty CSS3 popup. <br /> Easily customizable.
+                        </Popup>
+                    </Marker>
+                </MapContainer>
+
             </div>
 
             {/* Bottom Section */}

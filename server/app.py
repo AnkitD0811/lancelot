@@ -4,7 +4,6 @@ import constants as const
 import threading
 import logging
 
-from plot_map import plot_realtime
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -21,19 +20,27 @@ def serve_react():
     return send_from_directory(app.static_folder, "index.html")
 
 
-from flask_socketio import SocketIO, emit
+#### Websocket configuration for realtime display of tracker status ####
 
-socketio = SocketIO(app, cors_allowed_origins="*")
+
+from flask_socketio import SocketIO, emit
+from flask import request
+
+socketio = SocketIO(app, cors_allowed_origins="*") # Allow all origins for now; Change in prod
 
 @socketio.on('connect')
 def handle_connect():
-    print('Client Connected')
+    logging.info(f'Client Connected; ID: {request.sid}')
     emit('response', {'data' : 'Connected'})
 
 @socketio.on('message')
 def handle_message(data):
     print('Received: ', data)
     emit('response', {'data' : 'Got Message'})
+
+@socketio.on('disconnect')
+def test_disconnect(reason):
+    logging.info(f'Client disconnected, ID: {request.sid}, reason: {reason}')
 
 
 ####################### MQTT HANDLER ############################
