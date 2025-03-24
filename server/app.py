@@ -49,6 +49,7 @@ Flow:
 """
 
 from convert_to_geojson import convert_realtime
+import json
 
 
 def on_connect(client, userdata, flags, reason_code, properties):
@@ -59,8 +60,17 @@ def on_connect(client, userdata, flags, reason_code, properties):
 
 def on_message(client, userdata, msg):
     logging.info(f"Received message on {msg.topic}, QoS: {msg.qos}: {msg.payload}")
-    data = convert_realtime(msg.payload.decode('utf-8'))
-    socketio.emit('receive_tracker_data', data)
+
+    data = msg.payload.decode('utf-8')
+    # If GPS
+    if "gps" in data:
+        data = convert_realtime(data)
+        socketio.emit('receive_tracker_data_gps', data)
+        logging.info(f"Data sent to client: {data}")
+    elif "temperature" in data:
+        data = json.loads(data)
+        socketio.emit('receive_tracker_data_temperature_humidity', data)
+        logging.info(f"Data sent to client: {data}")
 
 
 
