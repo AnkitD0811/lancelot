@@ -64,9 +64,10 @@ def on_message(client, userdata, msg):
     data = msg.payload.decode('utf-8')
     # If GPS
     if "gps" in data:
-        data = convert_realtime(data)
-        socketio.emit('receive_tracker_data_gps', data)
-        logging.info(f"Data sent to client: {data}")
+        print("cant accept gps data yet")
+        # data = convert_realtime(data)
+        # socketio.emit('receive_tracker_data_gps', data)
+        # logging.info(f"Data sent to client: {data}")
     elif "temperature" in data:
         data = json.loads(data)
         socketio.emit('receive_tracker_data_temperature_humidity', data)
@@ -100,7 +101,8 @@ def subscribe_to():
     if 'deviceId' in request.form:
         deviceId = request.form['deviceId']
         topicStr = const.TOPIC_KEY + deviceId
-        client.subscribe(topicStr)
+        client.subscribe(topicStr +"/gps")
+        client.subscribe(topicStr+"/dht")
         logging.info(f"Subscribed to Topic: {topicStr}")
         return 'Subscription request received'
     else:

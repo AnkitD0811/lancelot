@@ -1,4 +1,4 @@
 # Mqtt Constants
-HOST = "broker.hivemq.com"
+HOST = "broker.mqtt.cool"
 PORT = 1883
 TOPIC_KEY = "esp32/62946/"
