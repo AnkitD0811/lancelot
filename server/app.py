@@ -62,12 +62,13 @@ def on_message(client, userdata, msg):
     logging.info(f"Received message on {msg.topic}, QoS: {msg.qos}: {msg.payload}")
 
     data = msg.payload.decode('utf-8')
-    # If GPS
     if "gps" in data:
-        print("cant accept gps data yet")
-        # data = convert_realtime(data)
-        # socketio.emit('receive_tracker_data_gps', data)
-        # logging.info(f"Data sent to client: {data}")
+        data = convert_realtime(data)
+        if(data != -1):
+            socketio.emit('receive_tracker_data_gps', data)
+            logging.info(f"Data sent to client: {data}")
+        else:
+            logging.info(f"GPS Packet empty; discarding")
     elif "temperature" in data:
         data = json.loads(data)
         socketio.emit('receive_tracker_data_temperature_humidity', data)
