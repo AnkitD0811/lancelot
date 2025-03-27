@@ -4,7 +4,8 @@ version = "0.1.0"
 description = "server for web app"
 authors = [
     {name = "Yash Mathur",email = "yashm.devs@gmail.com"},
-    {name = "Ankit Dey",email = "ankitdey0811@gmail.com"}
+    {name = "Ankit Dey",email = "ankitdey0811@gmail.com"},
+    {name = "Saranyo Ray", email= "saranyoray@gmail.com"}
 ]
 readme = "README.md"
 requires-python = "3.11.11"

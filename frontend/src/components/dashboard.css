@@ -31,7 +31,6 @@ body {
   height: calc(30vh - 40px);
   padding-top: 15px;
 }
-
 .circle {
   width: 130px;
   height: 130px;
@@ -42,12 +41,41 @@ body {
   justify-content: center;
   align-items: center;
   position: relative; 
+  flex-direction: column; 
 }
 
 .circle span {
-  font-size: small;
-  text-shadow: 1px 5px 7px rgba(0, 0, 0, 0.6);
+  font-size: medium; 
+}
 
+.circle .value {
+  font-size: 40px;
+  text-shadow: 1px 1px 3px black;
+  /* font-weight: bold;  */
+}
+
+.toggle-alarm-button {
+  color: black;
+  margin-top: 0px;
+  width: 130px;
+  height: 130px;
+  border-radius: 100%;
+  background-color: #FF5733;  /* A vibrant color */
+  box-shadow: 2px 3px 10px 2px rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative; 
+  flex-direction: column; 
+}
+
+.toggle-alarm-button:hover {
+  background-color: #C70039;
+  transform: scale(1.05);
+}
+
+.toggle-alarm-button:active {
+  transform: scale(0.98);
 }
 
 .fainfo {
@@ -70,6 +98,9 @@ body {
   background-color: rgba(255, 255, 255, 0.508) ;
 }
 
+.fabell {
+  font-size: 60px;
+}
 
 /* Sizing of map container */
 .leaflet-container {

@@ -1,5 +1,6 @@
 from flask import Flask, send_from_directory, request
 import paho.mqtt.client as mqtt
+import paho.mqtt.publish as publish
 import constants as const
 import threading
 import logging
@@ -104,6 +105,7 @@ def subscribe_to():
         topicStr = const.TOPIC_KEY + deviceId
         client.subscribe(topicStr +"/gps")
         client.subscribe(topicStr+"/dht")
+        client.subscribe(topicStr+"/buzzer") #notneeded?? .publish doesn't require .subscribe?? #iSubbedJustToBeSure:3
         logging.info(f"Subscribed to Topic: {topicStr}")
         return 'Subscription request received'
     else:
@@ -124,8 +126,18 @@ def unsubscribe_from():
 
 @app.route("/api/triggerAlarm", methods=['POST'])
 def trigger_alarm():
-    # Send MQTT Message buzzerOn or buzzerOff
-    return jsonify({"message" : "Alarm triggered successfully"}), 200
+    if 'deviceId' in request.form:
+        deviceId = request.form['deviceId']
+        topicStr = const.TOPIC_KEY + deviceId
+        topic_buzzer = f"{const.TOPIC_KEY}{deviceId}/buzzer"
+
+        publish.single(topic_buzzer, "buzzerToggle", hostname=const.HOST) #add PORT=const.PORT here if needed
+
+        logging.info(f"Alarm triggered for device: {deviceId}")
+        return f"Alarm triggered for device {deviceId}", 200
+    else:
+        logging.warning("deviceId not provided")
+        return 'deviceId not provided', 400
 
 
 ##################################################################
