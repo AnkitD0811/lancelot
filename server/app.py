@@ -122,6 +122,11 @@ def unsubscribe_from():
         logging.warning("deviceId not provided")
         return 'deviceId not provided', 400
 
+@app.route("/api/triggerAlarm", methods=['POST'])
+def trigger_alarm():
+    # Send MQTT Message buzzerOn or buzzerOff
+    return jsonify({"message" : "Alarm triggered successfully"}), 200
+
 
 ##################################################################
 

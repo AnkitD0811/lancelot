@@ -89,12 +89,14 @@ function Dashboard() {
             {/* Bottom Section */}
             <div className="bottom-section">
                 <div className="circle">
+                    <span>Temperature: </span>
                     <span>{temperature}</span>
                     <div className="fawrench"><FaWrench/></div>
                     <div className="fainfo"><FaInfo /></div>
                 </div>
 
                 <div className="circle">
+                    <span>Humidity: </span>
                     <span>{humidity}</span>
                     <div className="fawrench"><FaWrench/></div>
                     <div className="fainfo"><FaInfo /></div>
@@ -108,6 +110,7 @@ function Dashboard() {
 
                 <div className="circle">
                     <span>Alarm</span>
+                    <button>Trigger Alarm</button>
                     <div className="fainfo"><FaInfo /></div>
                 </div>
 
