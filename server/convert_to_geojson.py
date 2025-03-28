@@ -83,7 +83,10 @@ def convert_realtime(data):
             return -1
 
         # Convert altitude to decimal
-        altitude = float(altitude) if altitude else 0.0
+        
+        # FIX altitude = float(altitude) if altitude else 0.0
+
+        altitude = 0.0
 
         # Construct the geoJSON feature
         return({
