@@ -105,7 +105,6 @@ def subscribe_to():
         topicStr = const.TOPIC_KEY + deviceId
         client.subscribe(topicStr +"/gps")
         client.subscribe(topicStr+"/dht")
-        client.subscribe(topicStr+"/buzzer") #notneeded?? .publish doesn't require .subscribe?? #iSubbedJustToBeSure:3
         logging.info(f"Subscribed to Topic: {topicStr}")
         return 'Subscription request received'
     else:
@@ -128,7 +127,6 @@ def unsubscribe_from():
 def trigger_alarm():
     if 'deviceId' in request.form:
         deviceId = request.form['deviceId']
-        topicStr = const.TOPIC_KEY + deviceId
         topic_buzzer = f"{const.TOPIC_KEY}{deviceId}/buzzer"
 
         publish.single(topic_buzzer, "buzzerToggle", hostname=const.HOST) #add PORT=const.PORT here if needed
