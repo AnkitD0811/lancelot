@@ -1,31 +1,17 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import "./App.css";
-import NavBar from "./components/navbar";
-import Dashboard from "./components/dashboard";
-import Profile from "./components/profile";
-import About from "./components/about";
-import Home from "./components/home";
-import TrackerMenu from "./components/trackermenu";
-import Settings from "./components/settings";
-import AddTracker from "./components/addtracker";
+
+
+// Import Pages
+import LiveDashboard from "./pages/LiveDashboard";
+
+
 function App() {
     return (
-        <div>
-            <NavBar/>
-            <TrackerMenu />
-            <div className="main-content">
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/profile" element={<Profile />} />
-                    <Route path="/dashboard" element={<Dashboard />} />
-                    <Route path="/about" element={<About />} />
-                    <Route path="/settings" element={<Settings />} />
-                    <Route path="/addtracker" element={<AddTracker />} />
-                </Routes>
-            </div>
-        </div>
-    );
+            <Routes>
+                <Route path="/live" element={<LiveDashboard />} />
+            </Routes>
+        );
 }
 
 export default App;
