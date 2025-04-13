@@ -1,0 +1,27 @@
+
+
+#mappanel {
+
+    width: 55%;
+    height: 50%;
+
+    position: absolute;
+    top: 15%;
+    left: 35%;
+
+}
+
+#mapwindow {
+    background-color: rgb(109, 252, 185);
+    height: 95%;
+    width: 100%;
+    border-radius: 20px;
+}
+
+#mappanel p {
+    color: #3D3D3D;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 20px;
+    position: relative;
+    left: 5%;
+}
