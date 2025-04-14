@@ -1,0 +1,26 @@
+.device-plate {
+    background-color: #f5ecd7;
+    padding: 0.75rem 1rem;
+    border-radius: 1rem;
+    margin: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #2e2e2e;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    height: 10%;
+}
+
+.device-name {
+    flex: 1;
+}
+
+.device-icons {
+    display: flex;
+    gap: 0.4rem;
+    color: #2e2e2e;
+}

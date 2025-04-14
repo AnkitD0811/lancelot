@@ -1,0 +1,17 @@
+@import url('../main.css');
+
+#mainbutton {
+    background-color: var(--color1);
+    height: 50px;
+    width: 200px;
+    color: white;
+    border-radius: 20px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 20px;
+
+    position: relative;
+    left: 50%;
+    top: 10%;
+    translate: -50%;
+    border-color: aliceblue;
+}

@@ -1,0 +1,32 @@
+
+@import url('../main.css');
+
+#trackerselector {
+    background-color: var(--color1);
+    height: 60%;
+    width: 60%;
+    left: 50%;
+    translate: -50% 10%;
+    border-radius: 20px;
+    padding: 5px;
+
+    position: relative;
+    top: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+#trackerselector p {
+    color: white;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 25px;
+ }
+
+#listholder {
+    display: flex;
+    width: 100%;
+    height: 90%;
+}
