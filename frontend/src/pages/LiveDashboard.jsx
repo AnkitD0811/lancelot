@@ -6,6 +6,7 @@ import TrackerSelector from "../components/LiveDashboard/TrackerSelector";
 import AddTrackerButton from "../components/LiveDashboard/AddTrackerButton";
 import AlarmSwitch from "../components/LiveDashboard/AlarmSwitch";
 import SettingsButton from "../components/LiveDashboard/SettingsButton";
+import VehicleView from "../components/LiveDashboard/VehicleView";
 
 function LiveDashboard()
 {
@@ -30,6 +31,8 @@ function LiveDashboard()
 
 
             <div className="panel right" style={{height: "100%", width: "60%"}}>
+
+                <VehicleView />
 
             </div>
 
