@@ -1,4 +1,4 @@
-@import url('../main.css');
+@import url('../../main.css');
 
 #mainbutton {
     background-color: var(--color1);

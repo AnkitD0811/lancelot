@@ -11,8 +11,7 @@ export const deviceListSlice = createSlice( {
     reducers: {
         add: (state, action) => {
             
-            console.log("add was called");
-            state.length += 1;
+                state.length += 1;
             const list = state.dlist;
             list.push(action.payload);
             state.dlist = list;

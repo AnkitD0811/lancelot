@@ -1,5 +1,5 @@
 
-@import url('../main.css');
+@import url('../../main.css');
 
 #navbar {
     background-color: var(--color1);

@@ -1,0 +1,26 @@
+.device-plate {
+    background-color: #f5ecd7;
+    padding: 0.75rem 1rem;
+    border-radius: 1rem;
+    margin: 0.5rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #2e2e2e;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    width: 90%;
+    max-width: 300px;
+    transition: 0.2s ease;
+    cursor: pointer;
+}
+
+/* Hover or selected */
+.device-plate:hover,
+.device-plate.selected {
+    background-color: #fff7d6;
+    border: 2px solid #7c6f3a;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}

@@ -1,9 +1,11 @@
 
 
 // Components
-import Navbar from "../components/Navbar";
-import TrackerSelector from "../components/TrackerSelector";
-import AddTrackerButton from "../components/AddTrackerButton";
+import Navbar from "../components/Global/Navbar";
+import TrackerSelector from "../components/LiveDashboard/TrackerSelector";
+import AddTrackerButton from "../components/LiveDashboard/AddTrackerButton";
+import AlarmSwitch from "../components/LiveDashboard/AlarmSwitch";
+import SettingsButton from "../components/LiveDashboard/SettingsButton";
 
 function LiveDashboard()
 {
@@ -17,6 +19,12 @@ function LiveDashboard()
 
                 <TrackerSelector />
                 <AddTrackerButton />
+
+                <div style={{ display: "flex", justifyContent: "space-between", position: "relative", top: "15%", width: "50%", left: "25%"}}>
+                    <AlarmSwitch />
+                    <SettingsButton />
+                </div>
+                
 
             </div>
 

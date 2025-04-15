@@ -1,6 +1,6 @@
 
 import './AddDevicePopup.css';
-import { add } from '../app/features/deviceList';
+import { add } from '../../app/features/deviceList';
 import { useDispatch } from 'react-redux';
 
 
